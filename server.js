@@ -1,10 +1,9 @@
-/* Procurarse de crear la base de datos con los comandos en el db.txt*/
-
 const dotenv = require('dotenv');                   
 const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');             
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const conn_db = async () => {                     
     try {
@@ -33,7 +32,7 @@ conn_db();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}))
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const verify = async(req, res, next) => {       //la funcion de middleware verifica si la solicitud es autorizada o no
     let jwtSecret = process.env.JWT_SECRET;
@@ -61,6 +60,11 @@ const libro = new mongoose.Schema(
         timestamps: true,
     }
 );
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+});
+
 const Libro = mongoose.model('Libro', libro, 'libros');
 
 app.post('/verify-token', verify, (req, res) =>{            //verifica la token que tiene el usuario
@@ -155,6 +159,9 @@ app.post('/login', (req, res) =>{                   //inicia sesion
 });
 
 
-app.listen(process.env.PORT, ()=>{                 
-    console.log(`http://localhost:${process.env.PORT}`)         
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
