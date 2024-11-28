@@ -99,7 +99,6 @@ document.getElementById('login').addEventListener('submit', async(event) =>{
         },
         body: JSON.stringify({username: user, passcode: passcode})
     })
-    .then(response => response.json())
     .then(S => {
         switch(S.b){
 			case 0:
