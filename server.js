@@ -149,7 +149,3 @@ app.post('/login', (req, res) =>{                   //inicia sesion
     }
 });
 
-
-app.listen(process.env.PORT, ()=>{                 
-    console.log(`http://localhost:${process.env.PORT}`)         
-});
