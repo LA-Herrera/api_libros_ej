@@ -154,7 +154,7 @@ app.post('/login', (req, res) =>{                   //inicia sesion
         }
         const token = jwt.sign(data, jwtSecret, {expiresIn: '1h'}); //genera una token para el usuario con vida de 1 hora
         A.token = token;                                       
-        res.json(A);
+        res.status(200).json(A);
     }
 });
 
