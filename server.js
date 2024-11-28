@@ -143,7 +143,7 @@ app.post('/login', (req, res) =>{                   //inicia sesion
     };
     if(req.body.username !== process.env.USER || req.body.passcode !== process.env.PASSWORD){   //verifica los datos ingresados por el usuario
         A.b = 1;
-        res.json(A);
+        res.send(A);
     }else{
         A.a = true;
         A.b = 0;
@@ -154,7 +154,7 @@ app.post('/login', (req, res) =>{                   //inicia sesion
         }
         const token = jwt.sign(data, jwtSecret, {expiresIn: '1h'}); //genera una token para el usuario con vida de 1 hora
         A.token = token;                                       
-        res.status(200).json(A);
+        res.send(A);
     }
 });
 
