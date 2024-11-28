@@ -9,11 +9,6 @@ const jwt = require('jsonwebtoken');
 const conn_db = async () => {                     
     try {
         await mongoose.connect(`mongodb+srv://LA:8xuujBGISROFCm0V@cluster0.0jcmd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
-        const dbAdmin = mongoose.connection.db.admin();
-        const dbs = await dbAdmin.listDatabases();
-        if(!dbs.databases.some((db) => db.name === process.env.DATABASE)){
-            console.error('Base de datos no encontrada')
-        }
     } catch (error) {
         console.error(error);
         process.exit(1);
