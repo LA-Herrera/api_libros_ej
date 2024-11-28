@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books API</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+<body>
+    <div class="LOGIN" id="l_ctn" style="display: flex;">
+        <form id="login" class="login">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="user" placeholder="Usuario" required>
+            <input type="password" id="pass" required>
+            <button id="lg" type="submit">Ingresar</button>
+        </form>
+    </div>
+    <div class="ctn">
+        <h1>Gestor de Libros</h1>
+        <form id="create_libro" onsubmit="addBook()">
+            <h2>Agregar un Libro Nuevo</h2>
+            <input type="text" id="title" placeholder="Título" required>
+            <input type="text" id="authors" placeholder="Autores (separados por coma)" required>
+            <input type="text" id="category" placeholder="Categoria" required>
+            <button type="submit" id="s-btn">Agregar Libro</button>
+        </form>
+    
+        <h2>Lista de Libros</h2>
+        <table id="table_libros">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autores</th>
+                    <th>Categoria</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+          
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
